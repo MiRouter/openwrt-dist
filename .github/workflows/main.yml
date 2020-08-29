@@ -47,6 +47,8 @@ jobs:
         git clone https://github.com/tty228/luci-app-serverchan
         git clone https://github.com/xiaorouji/openwrt-package
         cd -
+        cd tools
+        svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: Compile
