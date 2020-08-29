@@ -49,7 +49,6 @@ jobs:
         cd -
         rm -rf tools/*
         svn co https://github.com/coolsnowwolf/lede/trunk/tools tools
-        cd -
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: Compile
