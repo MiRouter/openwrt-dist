@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
-      matrix:
-        SDK_URL:
-        - https://github.com/coolsnowwolf/lede
     steps:
     - uses: actions/checkout@master
     - name: Env for Openwrt SDK
@@ -24,13 +21,8 @@ jobs:
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
     - name: Download Openwrt SDK
-      env:
-        SDK_URL: ${{ matrix.SDK_URL }}
       run: |
-        SDK_HOME=$(head -c -8 <<< $(basename $SDK_URL))
-        wget $SDK_URL
-        tar xf $(basename $SDK_URL) -C ~/
-        mv ~/$SDK_HOME ~/sdk
+        git clone https://github.com/coolsnowwolf/lede sdk
         cp key-build ~/sdk/
     - name: Download Packages
       run: |
