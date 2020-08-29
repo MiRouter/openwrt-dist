@@ -13,11 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         SDK_URL:
-        - https://downloads.openwrt.org/releases/19.07.3/targets/ipq806x/generic/openwrt-sdk-19.07.3-ipq806x-generic_gcc-7.5.0_musl_eabi.Linux-x86_64.tar.xz
-        - https://downloads.openwrt.org/releases/19.07.3/targets/ipq40xx/generic/openwrt-sdk-19.07.3-ipq40xx-generic_gcc-7.5.0_musl_eabi.Linux-x86_64.tar.xz
-        - https://downloads.openwrt.org/releases/19.07.3/targets/ar71xx/generic/openwrt-sdk-19.07.3-ar71xx-generic_gcc-7.5.0_musl.Linux-x86_64.tar.xz
-        - https://downloads.openwrt.org/releases/19.07.3/targets/ramips/mt7621/openwrt-sdk-19.07.3-ramips-mt7621_gcc-7.5.0_musl.Linux-x86_64.tar.xz
-        - https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-sdk-x86-64_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+        - https://github.com/coolsnowwolf/lede
     steps:
     - uses: actions/checkout@master
     - name: Env for Openwrt SDK
@@ -41,14 +37,14 @@ jobs:
         cd ~/sdk
         cd package
         svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw
-        svn co https://github.com/coolsnowwolf/lede/trunk/package/lean
+        #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean
         git clone https://github.com/kenzok8/openwrt-packages
         git clone https://github.com/cnzd/luci-app-koolproxyR
         git clone https://github.com/tty228/luci-app-serverchan
         git clone https://github.com/xiaorouji/openwrt-package
         cd -
         rm -rf tools/*
-        svn co https://github.com/coolsnowwolf/lede/trunk/tools tools
+        #svn co https://github.com/coolsnowwolf/lede/trunk/tools tools
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: Compile
