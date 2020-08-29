@@ -23,7 +23,6 @@ jobs:
     - name: Download Openwrt SDK
       run: |
         git clone https://github.com/coolsnowwolf/lede sdk
-        cp key-build ~/sdk/
     - name: Download Packages
       run: |
         cd ~/sdk
