@@ -59,13 +59,13 @@ jobs:
         SDK_URL: ${{ matrix.SDK_URL }}
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |
-        TAG=$(sed -n 's/.*targets\/\(\w*\)\/\(\w*\)\/.*/packages\/\1\/\2/p' <<< $SDK_URL)
+        #TAG=$(sed -n 's/.*targets\/\(\w*\)\/\(\w*\)\/.*/packages\/\1\/\2/p' <<< $SDK_URL)
         # Upload base only
-        cd ~/sdk/bin/packages/*
+        cd ~/sdk/bin/packages
         git init
         git config user.name "bot"
         git config user.email "bot@github.com"
         git add .
         git commit -m "$TAG$(TZ='Asia/Shanghai' date +@%Y%m%d)"
-        git push --force --quiet "https://$GITHUB_TOKEN@github.com/MiRouter/openwrt-dist.git" HEAD:$TAG
+        git push --force --quiet "https://$GITHUB_TOKEN@github.com/MiRouter/openwrt-dist.git" HEAD:packages
 
